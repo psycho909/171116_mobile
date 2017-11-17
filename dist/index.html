@@ -525,6 +525,17 @@
 			}
 		})
 		$(function(){
+			$(window).on('load',function(){
+				var navHeight=$('.navbar').height();
+				var lastHeight=$('.last-open-box').height();
+				var nowHeight=$('.now-open-box').height();
+				var saveHeight=navHeight+lastHeight+nowHeight;
+				var wHeight=$(window).height();
+				$('.mainbody-box').height(wHeight-saveHeight+'px')
+				$('.menu-group').height(wHeight-saveHeight+'px')
+				$('.game-list-menu').height(wHeight-saveHeight+'px')
+			})
+
 			$('.menu-group li').on('click', function () {
 				$(this).parent('.menu-group').toggleClass('active')
 				$('.game-list-col').toggleClass('active')

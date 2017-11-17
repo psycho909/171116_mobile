@@ -72,6 +72,7 @@ table {
 }
 
 body {
+  overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -245,6 +246,10 @@ body {
   vertical-align: middle;
 }
 
+.menu-group {
+  overflow-y: auto;
+}
+
 .menu-group.active {
   -webkit-box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.4);
           box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.4);
@@ -292,6 +297,10 @@ body {
   opacity: 1;
 }
 
+.game-list-col .game-list-menu {
+  overflow-y: auto;
+}
+
 .game-list-col .game-list {
   cursor: pointer;
   background-color: rgba(250, 250, 250, 0.11);
@@ -334,6 +343,7 @@ body {
   text-align: center;
   -webkit-box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.4);
           box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
 }
 
 .mainbody-box .bet {

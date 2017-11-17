@@ -50,6 +50,7 @@ html{
 	}
 }
 body{
+	overflow: hidden;
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -190,6 +191,7 @@ body{
 	}
 }
 .menu-group{
+	overflow-y: auto;
 	&.active{
 		box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.4);
 	}
@@ -223,6 +225,9 @@ body{
 		.game-list{
 			opacity: 1;
 		}
+	}
+	.game-list-menu{
+		overflow-y: auto;
 	}
 	.game-list{
 		cursor: pointer;
@@ -261,7 +266,7 @@ body{
 	font-weight: 600;
 	text-align: center;
 	box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.4);
-
+	overflow-y: auto;
 	.bet{
 		&.active{
 			background-color:rgba(0,0,0,.4);
