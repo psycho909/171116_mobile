@@ -114,7 +114,7 @@
 				
 				<div class="col-2 game-list-col p-0">
 					<ul class="game-list-menu text-center">
-						<li v-for="(game,index) in gameList" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
+						<li v-for="(game,index) in gameList" :class={active:game.active} class="game-list py-3 px-4" :data-list=index @click="gameListSelect()">{{game.name}}</li>
 					</ul>
 				</div>
 
