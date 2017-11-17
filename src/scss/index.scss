@@ -219,8 +219,7 @@ body{
 	background-color: rgba(0,0,0,.21);
 	box-shadow: 1px 0 0 rgba(255,255,255,.48);
 	&.active{
-		width: (100% / 12) * 2  !important;
-		flex-basis: (100% / 12) * 2  !important;
+		flex-basis: 20%  !important;
 		.game-list{
 			opacity: 1;
 		}

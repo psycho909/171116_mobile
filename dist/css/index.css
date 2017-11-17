@@ -284,9 +284,8 @@ body {
 }
 
 .game-list-col.active {
-  width: 16.66667% !important;
-  -ms-flex-preferred-size: 16.66667% !important;
-      flex-basis: 16.66667% !important;
+  -ms-flex-preferred-size: 20%  !important;
+      flex-basis: 20%  !important;
 }
 
 .game-list-col.active .game-list {
