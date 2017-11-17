@@ -350,6 +350,15 @@
 		var mixinCreated={
 			created(){
 				this.$nextTick(function(){
+					var navHeight=$('.navbar').outerHeight();
+					var lastHeight=$('.last-open-box').outerHeight();
+					var nowHeight=$('.now-open-box').outerHeight();
+					var playHeight=$('.play-box').outerHeight();
+					var saveHeight=navHeight+lastHeight+nowHeight+playHeight;
+					var wHeight=$(window).height();
+					$('.mainbody-box').height(wHeight-saveHeight+'px')
+					$('.menu-group').height(wHeight-saveHeight+'px')
+					$('.game-list-menu').height(wHeight-saveHeight+'px')
 					$('.mainbody .bet').on('click', function () {
 						var num=$(this).closest('.mainbody-box').data('num');
 						$(this).toggleClass('active')
@@ -525,17 +534,6 @@
 			}
 		})
 		$(function(){
-			$(window).on('load',function(){
-				var navHeight=$('.navbar').height();
-				var lastHeight=$('.last-open-box').height();
-				var nowHeight=$('.now-open-box').height();
-				var saveHeight=navHeight+lastHeight+nowHeight;
-				var wHeight=$(window).height();
-				$('.mainbody-box').height(wHeight-saveHeight+'px')
-				$('.menu-group').height(wHeight-saveHeight+'px')
-				$('.game-list-menu').height(wHeight-saveHeight+'px')
-			})
-
 			$('.menu-group li').on('click', function () {
 				$(this).parent('.menu-group').toggleClass('active')
 				$('.game-list-col').toggleClass('active')
