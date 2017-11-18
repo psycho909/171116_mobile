@@ -130,7 +130,7 @@
 
 		<div class="add-height w-100"></div>
 
-		<section class="play-box fixed-bottom">
+		<section class="play-box fixed-bottom" v-if="false">
 			<div class="container-fluid">
 				<div class="row py-2">
 					<div class="col-12 d-flex">
@@ -527,8 +527,7 @@
 			},
 			methods:{
 				gameListSelect:function(){
-					var _self=this;
-					$(event.target).addClass('active').siblings().removeClass('active');
+					$(event.target).addClass('active').siblings().removeClass('active has-bet');
 					this.gameListSelectNum=$(event.target).data('list')
 				}
 			}
