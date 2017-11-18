@@ -1,0 +1,29 @@
+<div class="col mainbody-box">
+    <div class="row mainbody" v-for="game in gameList">
+        <div class="col-12 py-3">
+            <div class="mainbody-title text-white text-center">
+                <span class="bet-content">{{game.title}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet py-3">
+            <span class="bet-content">{{game.name_a1}}</span>
+            <span>{{game.name_a1_num}}</span>
+        </div>
+        <div class="col-6 bet py-3">
+            <span class="bet-content">{{game.name_a2}}</span>
+            <span>{{game.name_a2_num}}</span>
+        </div>
+        <div class="col-6 bet py-3">
+            <span class="bet-content">{{game.name_a3}}</span>
+            <span>{{game.name_a3_num}}</span>
+        </div>
+        <div class="col-6 bet py-3">
+            <span class="bet-content">{{game.name_a4}}</span>
+            <span>{{game.name_a4_num}}</span>
+        </div>
+        <div class="col-12 bet py-3">
+            <span class="bet-content">{{game.name_a5}}</span>
+            <span>{{game.name_a5_num}}</span>
+        </div>
+    </div>
+</div>

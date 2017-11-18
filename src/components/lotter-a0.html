@@ -1,0 +1,82 @@
+<div class="col mainbody-box" data-num="0">
+    <div class="row mainbody">
+        <div class="col-12">
+            <div class="mainbody-title text-white text-center py-2">
+                <span class="bet-content">{{game_group[0].group_a.title}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="total-big">
+                <span class="bet-content">{{game_group[0].group_a.name_a}}</span>
+                <span>{{game_group[0].group_a.number_a}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="total-small-num">
+                <span class="bet-content">{{game_group[0].group_a.name_b}}</span>
+                <span>{{game_group[0].group_a.number_b}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="total-single">
+                <span class="bet-content">{{game_group[0].group_a.name_c}}</span>
+                <span>{{game_group[0].group_a.number_c}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="total-big">
+                <span class="bet-content">{{game_group[0].group_a.name_d}}</span>
+                <span>{{game_group[0].group_a.number_d}}</span>
+            </div>
+        </div>
+        <div class="col-4 bet">
+            <div class="dragon">
+                <span class="bet-content">{{game_group[0].group_a.name_e}}</span>
+                <span>{{game_group[0].group_a.number_e}}</span>
+            </div>
+        </div>
+        <div class="col-4 bet">
+            <div class="tiger">
+                <span class="bet-content">{{game_group[0].group_a.name_f}}</span>
+                <span>{{game_group[0].group_a.number_f}}</span>
+            </div>
+        </div>
+        <div class="col-4 bet">
+            <div class="total">
+                <span class="bet-content">{{game_group[0].group_a.name_g}}</span>
+                <span>{{game_group[0].group_a.number_g}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mainbody" v-for="game in game_group[0].group_b">
+        <div class="col-12">
+            <div class="mainbody-title text-white text-center py-2">
+                {{game.title}}
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="big">
+                <span class="bet-content">{{game.name_a}}</span>
+                <span>{{game.number_a}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="small-num">
+                <span class="bet-content">{{game.name_b}}</span>
+                <span>{{game.number_b}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="single">
+                <span class="bet-content">{{game.name_c}}</span>
+                <span>{{game.number_c}}</span>
+            </div>
+        </div>
+        <div class="col-6 bet">
+            <div class="big">
+                <span class="bet-content">{{game.name_d}}</span>
+                <span>{{game.number_d}}</span>
+            </div>
+        </div>
+    </div>
+</div>
