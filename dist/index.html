@@ -116,14 +116,15 @@
 						<li v-for="(game,index) in gameList" :class={active:game.active} class="game-list py-3 px-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
 					</ul>
 				</div>
-
-				<lotter-a0 v-if="gameListSelectNum == 0"></lotter-a0>
-				<lotter-a1 name="第一球" :num="1" v-if="gameListSelectNum == 1"></lotter-a1>
-				<lotter-a1 name="第二球" :num="2" v-if="gameListSelectNum == 2"></lotter-a1>
-				<lotter-a1 name="第三球" :num="3" v-if="gameListSelectNum == 3"></lotter-a1>
-				<lotter-a1 name="第四球" :num="4" v-if="gameListSelectNum == 4"></lotter-a1>
-				<lotter-a1 name="第五球" :num="5" v-if="gameListSelectNum == 5"></lotter-a1>
-				<lotter-a2 v-if="gameListSelectNum == 6"></lotter-a2>
+				<keep-alive>
+					<lotter-a0 v-if="gameListSelectNum == 0"></lotter-a0>
+					<lotter-a1 name="第一球" :num="1" v-if="gameListSelectNum == 1"></lotter-a1>
+					<lotter-a1 name="第二球" :num="2" v-if="gameListSelectNum == 2"></lotter-a1>
+					<lotter-a1 name="第三球" :num="3" v-if="gameListSelectNum == 3"></lotter-a1>
+					<lotter-a1 name="第四球" :num="4" v-if="gameListSelectNum == 4"></lotter-a1>
+					<lotter-a1 name="第五球" :num="5" v-if="gameListSelectNum == 5"></lotter-a1>
+					<lotter-a2 v-if="gameListSelectNum == 6"></lotter-a2>
+				</keep-alive>
 			</div>
 		</div>
 
