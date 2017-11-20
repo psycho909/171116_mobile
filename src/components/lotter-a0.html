@@ -5,14 +5,8 @@
         </div>
     </div>
     <template v-for="bet in bets">
-        <div class="col-6 bet" v-if="bet.col == 6">
+        <div class="bet" :class='bet.col'>
             <div class="total-big">
-                <span class="bet-content">{{bet.name}}</span>
-                <span class="bet-item">{{bet.num}}</span>
-            </div>
-        </div>
-        <div class="col-4 bet" v-if="bet.col == 4">
-            <div class="dragon">
                 <span class="bet-content">{{bet.name}}</span>
                 <span class="bet-item">{{bet.num}}</span>
             </div>
