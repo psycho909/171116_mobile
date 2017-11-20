@@ -1,6 +1,7 @@
 import lotterA0 from '../components/lotter-a0.html'
 import lotterA0Child from '../components/lotter-a0-child.html'
 import lotterA1NuNu from '../components/lotter-a1nunu.html'
+import lotterA2 from '../components/bef-and-af.html'
 console.log(123)
 var mixinCreated={
     created(){
@@ -103,6 +104,10 @@ Vue.component('lotter-a1nunu',{
         }
     }
 })
+Vue.component('lotter-a2',{
+    template:lotterA2,
+    props:['title']
+})
 var menuList=[
     {name:'重慶時時彩',data:'lottera'},
     {name:'天津時時彩',data:'lotterb'},
@@ -119,15 +124,44 @@ var menuList=[
 ]
 var lotteraList=[
     {name:'整合',active:true},
-    {name:'牛牛 梭哈',active:false}
+    {name:'牛牛 梭哈',active:false},
+    {name:'前中後',active:false},
 ]
 var lotterbList=[
     {name:'整合',active:true},
-    {name:'牛牛 梭哈',active:false}
+    {name:'牛牛 梭哈',active:false},
+    {name:'前中後',active:false},
 ]
-var lotterbList=[
+var happy10mina=[
     {name:'整合',active:true},
-    {name:'牛牛 梭哈',active:false}
+    {name:'連碼',active:false},
+]
+var happy10minb=[
+    {name:'整合',active:true},
+    {name:'連碼',active:false},
+]
+var happy10minc=[
+    {name:'整合',active:true},
+    {name:'連碼',active:false},
+]
+var pk10=[
+    {name:'整合',active:true}
+]
+var lukyAirShip=[
+    {name:'整合',active:true}
+]
+var elevenList=[
+    {name:'整合',active:true},
+    {name:'前中後',active:false},
+]
+var order3List=[
+    {name:'整合',active:true}
+]
+var threedList=[
+    {name:'整合',active:true}
+]
+var shanghaiList=[
+    {name:'整合',active:true}
 ]
 var app=new Vue({
     el:'#app',

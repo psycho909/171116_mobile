@@ -126,6 +126,18 @@
 					<lotter-a0 num="0" v-show="gameListSelectNum == 0"></lotter-a0>
 					<lotter-a1nunu num="1" v-show="gameListSelectNum == 1"></lotter-a1nunu>
 				</template>
+				<template v-if="menuListSelectData == 'lotterb' ">
+					<div class="game-list-col p-0">
+						<ul class="game-list-menu text-center">
+							<li v-for="(game,index) in lotterbList" 
+							:class={active:game.active} class="game-list py-3" 
+							:data-list=index 
+							@click="gameListSelect()">{{game.name}}</li>
+						</ul>
+					</div>
+					<lotter-a0 num="0" v-show="gameListSelectNum == 0"></lotter-a0>
+					<lotter-a1nunu num="1" v-show="gameListSelectNum == 1"></lotter-a1nunu>
+				</template>
 			</div>
 		</div>
 
