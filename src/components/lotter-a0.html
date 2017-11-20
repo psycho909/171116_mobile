@@ -1,56 +1,22 @@
-<div class="col mainbody-box" :data-num=num>
-    <div class="row mainbody">
-        <div class="col-12">
-            <div class="mainbody-title text-white text-center py-2">
-                <span class="bet-content">{{game_group[0].group_a.title}}</span>
-            </div>
-        </div>
-        <div class="col-6 bet" ref="bets" @click="betClick" data-aa="aa">
-            <div class="total-big">
-                <span class="bet-content">{{game_group[0].group_a.name_a}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_a}}</span>
-            </div>
-        </div>
-        <div class="col-6 bet" ref="bets" @click="betClick" data-aa="bb">
-            <div class="total-small-num">
-                <span class="bet-content">{{game_group[0].group_a.name_b}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_b}}</span>
-            </div>
-        </div>
-        <div class="col-6 bet">
-            <div class="total-single">
-                <span class="bet-content">{{game_group[0].group_a.name_c}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_c}}</span>
-            </div>
-        </div>
-        <div class="col-6 bet">
-            <div class="total-big">
-                <span class="bet-content">{{game_group[0].group_a.name_d}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_d}}</span>
-            </div>
-        </div>
-        <div class="col-4 bet">
-            <div class="dragon">
-                <span class="bet-content">{{game_group[0].group_a.name_e}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_e}}</span>
-            </div>
-        </div>
-        <div class="col-4 bet">
-            <div class="tiger">
-                <span class="bet-content">{{game_group[0].group_a.name_f}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_f}}</span>
-            </div>
-        </div>
-        <div class="col-4 bet">
-            <div class="total">
-                <span class="bet-content">{{game_group[0].group_a.name_g}}</span>
-                <span class="bet-item">{{game_group[0].group_a.number_g}}</span>
-            </div>
+<div class="row mainbody">
+    <div class="col-12">
+        <div class="mainbody-title text-white text-center py-2">
+            <span class="bet-content">{{title}}</span>
         </div>
     </div>
-    <lotter-a0-child name="第一球"></lotter-a0-child>
-    <lotter-a0-child name="第二球"></lotter-a0-child>
-    <lotter-a0-child name="第三球"></lotter-a0-child>
-    <lotter-a0-child name="第四球"></lotter-a0-child>
-    <lotter-a0-child name="第五球"></lotter-a0-child>
+    <template v-for="bet in bets">
+        <div class="col-6 bet" v-if="bet.col == 6">
+            <div class="total-big">
+                <span class="bet-content">{{bet.name}}</span>
+                <span class="bet-item">{{bet.num}}</span>
+            </div>
+        </div>
+        <div class="col-4 bet" v-if="bet.col == 4">
+            <div class="dragon">
+                <span class="bet-content">{{bet.name}}</span>
+                <span class="bet-item">{{bet.num}}</span>
+            </div>
+        </div>
+    </template>
+
 </div>

@@ -1,5 +1,5 @@
 import lotterA0 from '../components/lotter-a0.html'
-import lotterA0Child from '../components/lotter-a0-child.html'
+import lotterA0Ball from '../components/lotter-a0-ball.html'
 import lotterA1NuNu from '../components/lotter-a1nunu.html'
 import lotterA2 from '../components/bef-and-af.html'
 console.log(123)
@@ -32,30 +32,9 @@ var mixinCreated={
 Vue.component('lotter-a0',{
     template:lotterA0,
     mixins:[mixinCreated],
-    props:['num'],
+    props:['title','bets'],
     data(){
         return {
-            game_group:[
-                {
-                    "group_a":{
-                        title: "总和、龙虎",
-                        name_a: "总合大",
-                        number_a: 1.982,
-                        name_b: "总合小",
-                        number_b: 1.982,
-                        name_c: "总合单",
-                        number_c: 1.982,
-                        name_d: "总合双",
-                        number_d: 1.982,
-                        name_e: "龙",
-                        number_e: 1.982,
-                        name_f: "虎",
-                        number_f: 1.982,
-                        name_g: "和",
-                        number_g: 9.4
-                    }
-                }
-            ]
         }
     },
     methods:{
@@ -64,45 +43,15 @@ Vue.component('lotter-a0',{
         }
     }
 })
-Vue.component('lotter-a0-child',{
-    template:lotterA0Child,
+Vue.component('lotter-a0-ball',{
+    template:lotterA0Ball,
     mixins:[mixinCreated],
-    props:['name']
+    props:['title']
 })
 Vue.component('lotter-a1nunu',{
     template:lotterA1NuNu,
     mixins:[mixinCreated],
-    props:['title','num'],
-    data(){
-        return {
-            nunu:[
-                {name:'牛1',num:94.8},
-                {name:'牛2',num:94.8},
-                {name:'牛3',num:94.8},
-                {name:'牛4',num:94.8},
-                {name:'牛5',num:94.8},
-                {name:'牛6',num:94.8},
-                {name:'牛7',num:94.8},
-                {name:'牛8',num:94.8},
-                {name:'牛9',num:94.8},
-                {name:'無牛',num:94.8},
-                {name:'牛牛',num:94.8},
-                {name:'牛大',num:94.8},
-                {name:'牛單',num:94.8},
-                {name:'牛雙',num:94.8},
-                {name:'牛小',num:94.8},
-            ],
-            suoha:[
-                {name:'四條',num:94.8},
-                {name:'三條',num:94.8},
-                {name:'葫蘆',num:94.8},
-                {name:'順子',num:94.8},
-                {name:'兩對',num:94.8},
-                {name:'一對',num:94.8},
-                {name:'散號',num:94.8}
-            ],
-        }
-    }
+    props:['title','list']
 })
 Vue.component('lotter-a2',{
     template:lotterA2,
@@ -165,13 +114,62 @@ var shanghaiList=[
 ]
 var app=new Vue({
     el:'#app',
+    created(){
+        this.$nextTick(function(){
+            $('.mainbody .bet').on('click', function () {
+                var num=Number($(this).closest('.mainbody-box').attr('data-num'));
+                $(this).toggleClass('active')
+                $('.bet-num').text($('.mainbody .bet.active').length)
+                if( $('.game-list').eq(num).hasClass('active') && $('.mainbody .bet.active').length >= 1){
+                    $('.game-list').eq(num).addClass('has-bet')
+                }else if($('.mainbody .bet.active').length == 0){
+                    $('.game-list').eq(num).removeClass('has-bet')
+                }
+            })
+        })
+    },
     data:{
         menuList:menuList,
         lotteraList:lotteraList,
         lotterbList:lotterbList,
         menuListSelectData:'lottera',
         gameListSelectNum:0,
-        bet_length:0
+        bet_length:0,
+        lotter_a:[
+            {name:'总合大',num:1.982,col:6},
+            {name:'总合小',num:1.982,col:6},
+            {name:'总合单',num:1.982,col:6},
+            {name:'总合双',num:1.982,col:6},
+            {name:'龙',num:1.982,col:4},
+            {name:'虎',num:1.982,col:4},
+            {name:'和',num:1.982,col:4},
+        ],
+        nunu:[
+            {name:'牛1',num:94.8},
+            {name:'牛2',num:94.8},
+            {name:'牛3',num:94.8},
+            {name:'牛4',num:94.8},
+            {name:'牛5',num:94.8},
+            {name:'牛6',num:94.8},
+            {name:'牛7',num:94.8},
+            {name:'牛8',num:94.8},
+            {name:'牛9',num:94.8},
+            {name:'無牛',num:94.8},
+            {name:'牛牛',num:94.8},
+            {name:'牛大',num:94.8},
+            {name:'牛單',num:94.8},
+            {name:'牛雙',num:94.8},
+            {name:'牛小',num:94.8},
+        ],
+        suoha:[
+            {name:'四條',num:94.8},
+            {name:'三條',num:94.8},
+            {name:'葫蘆',num:94.8},
+            {name:'順子',num:94.8},
+            {name:'兩對',num:94.8},
+            {name:'一對',num:94.8},
+            {name:'散號',num:94.8}
+        ]
     },
     methods:{
         menuListSelect:function(){
