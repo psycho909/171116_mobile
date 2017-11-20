@@ -106,15 +106,22 @@ Vue.component('lotter-a1nunu',{
 var menuList=[
     {name:'重慶時時彩',data:'lottera'},
     {name:'天津時時彩',data:'lotterb'},
-    {name:'廣東快樂十分',data:''},
-    {name:'廣西快樂十分',data:''},
-    {name:'天津快樂十分',data:''},
-    {name:'重慶快樂十分',data:''},
-    {name:'北京賽車PK10',data:''},
-    {name:'幸運飛艇',data:''},
-    {name:'廣東11選5',data:''}
+    {name:'廣東快樂十分',data:'happy10mina'},
+    {name:'廣西快樂十分',data:'happy10minb'},
+    {name:'天津快樂十分',data:'happy10minc'},
+    {name:'重慶快樂十分',data:'happy10mind'},
+    {name:'北京賽車PK10',data:'pk10'},
+    {name:'幸運飛艇',data:'lukyAirShip'},
+    {name:'廣東11選5',data:'11select5'},
+    {name:'排列三',data:'order3'},
+    {name:'福彩3D',data:'3d'},
+    {name:'上海時時樂',data:'shanghai'}
 ]
 var lotteraList=[
+    {name:'整合',active:true},
+    {name:'牛牛 梭哈',active:false}
+]
+var lotterbList=[
     {name:'整合',active:true},
     {name:'牛牛 梭哈',active:false}
 ]
