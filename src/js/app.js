@@ -1,7 +1,7 @@
 import lotterA0 from '../components/lotter-a0.html'
-import lotterA1 from '../components/lotter-a1.html'
-import lotterA2 from '../components/lotter-a2.html'
-console.log(lotterA1)
+import lotterA0Child from '../components/lotter-a0-child.html'
+import lotterA1NuNu from '../components/lotter-a1nunu.html'
+console.log(123)
 var mixinCreated={
     created(){
         this.$nextTick(function(){
@@ -15,12 +15,12 @@ var mixinCreated={
             $('.menu-group').height(wHeight-saveHeight+'px')
             $('.game-list-menu').height(wHeight-saveHeight+'px')
             $('.mainbody .bet').on('click', function () {
-                var num=$(this).closest('.mainbody-box').data('num');
+                var num=Number($(this).closest('.mainbody-box').attr('data-num'));
                 $(this).toggleClass('active')
                 $('.bet-num').text($('.mainbody .bet.active').length)
                 if( $('.game-list').eq(num).hasClass('active') && $('.mainbody .bet.active').length >= 1){
                     $('.game-list').eq(num).addClass('has-bet')
-                }else{
+                }else if($('.mainbody .bet.active').length == 0){
                     $('.game-list').eq(num).removeClass('has-bet')
                 }
             })
@@ -31,6 +31,7 @@ var mixinCreated={
 Vue.component('lotter-a0',{
     template:lotterA0,
     mixins:[mixinCreated],
+    props:['num'],
     data(){
         return {
             game_group:[
@@ -51,137 +52,94 @@ Vue.component('lotter-a0',{
                         number_f: 1.982,
                         name_g: "和",
                         number_g: 9.4
-                    },
-                    "group_b":[
-                        {
-                            title: "第一球",
-                            name_a: "大",
-                            number_a: 1.982,
-                            name_b: "小",
-                            number_b: 1.982,
-                            name_c: "单",
-                            number_c: 1.982,
-                            name_d: "双",
-                            number_d: 1.982
-                        },
-                        {
-                            title: "第二球",
-                            name_a: "大",
-                            number_a: 1.982,
-                            name_b: "小",
-                            number_b: 1.982,
-                            name_c: "单",
-                            number_c: 1.982,
-                            name_d: "双",
-                            number_d: 1.982
-                        },
-                        {
-                            title: "第三球",
-                            name_a: "大",
-                            number_a: 1.982,
-                            name_b: "小",
-                            number_b: 1.982,
-                            name_c: "单",
-                            number_c: 1.982,
-                            name_d: "双",
-                            number_d: 1.982
-                        },
-                        {
-                            title: "第四球",
-                            name_a: "大",
-                            number_a: 1.982,
-                            name_b: "小",
-                            number_b: 1.982,
-                            name_c: "单",
-                            number_c: 1.982,
-                            name_d: "双",
-                            number_d: 1.982
-                        },
-                        {
-                            title: "第五球",
-                            name_a: "大",
-                            number_a: 1.982,
-                            name_b: "小",
-                            number_b: 1.982,
-                            name_c: "单",
-                            number_c: 1.982,
-                            name_d: "双",
-                            number_d: 1.982
-                        }
-                    ]
+                    }
                 }
             ]
         }
+    },
+    methods:{
+        betClick:function(){
+            console.log(this.$refs)
+        }
     }
 })
-Vue.component('lotter-a1',{
-    template:lotterA1,
+Vue.component('lotter-a0-child',{
+    template:lotterA0Child,
     mixins:[mixinCreated],
-    props:['name','num']
+    props:['name']
 })
-Vue.component('lotter-a2',{
-    template:lotterA2,
+Vue.component('lotter-a1nunu',{
+    template:lotterA1NuNu,
     mixins:[mixinCreated],
+    props:['title','num'],
     data(){
         return {
-            gameList:[
-                {
-                    title:'前三',
-                    name_a1:'豹子',
-                    name_a1_num:70,
-                    name_a2:'顺子',
-                    name_a2_num:14,
-                    name_a3:'对子',
-                    name_a3_num:3.2,
-                    name_a4:'半顺',
-                    name_a4_num:2.3,
-                    name_a5:'杂六',
-                    name_a5_num:2.8,
-                },{
-                    title:'中三',
-                    name_a1:'豹子',
-                    name_a1_num:70,
-                    name_a2:'顺子',
-                    name_a2_num:14,
-                    name_a3:'对子',
-                    name_a3_num:3.2,
-                    name_a4:'半顺',
-                    name_a4_num:2.3,
-                    name_a5:'杂六',
-                    name_a5_num:2.8,
-                },{
-                    title:'后三',
-                    name_a1:'豹子',
-                    name_a1_num:70,
-                    name_a2:'顺子',
-                    name_a2_num:14,
-                    name_a3:'对子',
-                    name_a3_num:3.2,
-                    name_a4:'半顺',
-                    name_a4_num:2.3,
-                    name_a5:'杂六',
-                    name_a5_num:2.8,
-                }
-            ]
+            nunu:[
+                {name:'牛1',num:94.8},
+                {name:'牛2',num:94.8},
+                {name:'牛3',num:94.8},
+                {name:'牛4',num:94.8},
+                {name:'牛5',num:94.8},
+                {name:'牛6',num:94.8},
+                {name:'牛7',num:94.8},
+                {name:'牛8',num:94.8},
+                {name:'牛9',num:94.8},
+                {name:'無牛',num:94.8},
+                {name:'牛牛',num:94.8},
+                {name:'牛大',num:94.8},
+                {name:'牛單',num:94.8},
+                {name:'牛雙',num:94.8},
+                {name:'牛小',num:94.8},
+            ],
+            suoha:[
+                {name:'四條',num:94.8},
+                {name:'三條',num:94.8},
+                {name:'葫蘆',num:94.8},
+                {name:'順子',num:94.8},
+                {name:'兩對',num:94.8},
+                {name:'一對',num:94.8},
+                {name:'散號',num:94.8}
+            ],
         }
     }
 })
-var gameList=[
-    {name:'两面',active:true},
-    {name:'第一球',active:false},
-    {name:'第二球',active:false},
-    {name:'第三球',active:false},
-    {name:'第四球',active:false},
-    {name:'第五球',active:false},
-    {name:'前中后',active:false},
+var menuList=[
+    {name:'重慶時時彩',data:'lottera'},
+    {name:'天津時時彩',data:'lotterb'},
+    {name:'廣東快樂十分',data:''},
+    {name:'廣西快樂十分',data:''},
+    {name:'天津快樂十分',data:''},
+    {name:'重慶快樂十分',data:''},
+    {name:'北京賽車PK10',data:''},
+    {name:'幸運飛艇',data:''},
+    {name:'廣東11選5',data:''}
+]
+var lotteraList=[
+    {name:'整合',active:true},
+    {name:'牛牛 梭哈',active:false}
+]
+var lotterbList=[
+    {name:'整合',active:true},
+    {name:'牛牛 梭哈',active:false}
 ]
 var app=new Vue({
     el:'#app',
     data:{
-        gameList:gameList,
-        gameListSelectNum:0
+        menuList:menuList,
+        lotteraList:lotteraList,
+        lotterbList:lotterbList,
+        menuListSelectData:'lottera',
+        gameListSelectNum:0,
+        bet_length:0
     },
     methods:{
+        menuListSelect:function(){
+            $(event.target).parent('.menu-group').toggleClass('active')
+            $('.game-list-col').toggleClass('active')
+            $('.game-title').text($(event.target).text())
+            this.menuListSelectData=$(event.target).data('menu')
+            console.log(this.menuListSelectData)
+        },
         gameListSelect:function(){
             $(event.target).addClass('active').siblings().removeClass('active has-bet');
             this.gameListSelectNum=$(event.target).data('list')
@@ -189,10 +147,6 @@ var app=new Vue({
     }
 })
 $(function(){
-    $('.menu-group li').on('click', function () {
-        $(this).parent('.menu-group').toggleClass('active')
-        $('.game-list-col').toggleClass('active')
-    })
     var overTime = 120;
     var openTime = 180;
     var s = 0,
