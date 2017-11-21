@@ -5,6 +5,7 @@ import vueSwiper from '../components/vue-swiper.html'
 var mixinCreated={
     created(){
         this.$nextTick(function(){
+            console.log('mixin')
             var navHeight=$('.navbar').outerHeight();
             var lastHeight=$('.last-open-box').outerHeight();
             var nowHeight=$('.now-open-box').outerHeight();
@@ -55,40 +56,40 @@ Vue.component('vue-swiper',{
     }
 })
 var menuList=[
-    {name:'重慶時時彩',data:'lottera'},
-    {name:'天津時時彩',data:'lotterb'},
-    {name:'廣東快樂十分',data:'happy10mina'},
-    {name:'廣西快樂十分',data:'happy10minb'},
-    {name:'天津快樂十分',data:'happy10minc'},
-    {name:'重慶快樂十分',data:'happy10mind'},
-    {name:'北京賽車PK10',data:'pk10'},
-    {name:'幸運飛艇',data:'lukyAirShip'},
-    {name:'廣東11選5',data:'elevenList'},
+    {name:'重庆时时彩',data:'lottera'},
+    {name:'天津时时彩',data:'lotterb'},
+    {name:'广东快乐十分',data:'happy10mina'},
+    {name:'广西快乐十分',data:'happy10minb'},
+    {name:'天津快乐十分',data:'happy10minc'},
+    {name:'重庆快乐十分',data:'happy10mind'},
+    {name:'北京赛车PK10',data:'pk10'},
+    {name:'幸运飞艇',data:'lukyAirShip'},
+    {name:'广东11选5',data:'elevenList'},
     {name:'排列三',data:'order3'},
     {name:'福彩3D',data:'3d'},
-    {name:'上海時時樂',data:'shanghai'}
+    {name:'上海时时乐',data:'shanghai'}
 ]
 var lotteraList=[
     {name:'整合',active:true},
     {name:'牛牛 梭哈',active:false},
-    {name:'前中後',active:false},
+    {name:'前中后',active:false},
 ]
 var lotterbList=[
     {name:'整合',active:true},
     {name:'牛牛 梭哈',active:false},
-    {name:'前中後',active:false},
+    {name:'前中后',active:false},
 ]
 var happy10mina=[
     {name:'整合',active:true},
-    {name:'連碼',active:false},
+    {name:'连码',active:false},
 ]
 var happy10minb=[
     {name:'整合',active:true},
-    {name:'連碼',active:false},
+    {name:'连码',active:false},
 ]
 var happy10minc=[
     {name:'整合',active:true},
-    {name:'連碼',active:false},
+    {name:'连码',active:false},
 ]
 var pk10=[
     {name:'整合',active:true}
@@ -113,21 +114,20 @@ var app=new Vue({
     el:'#app',
     created(){
         this.$nextTick(function(){
-            $('.mainbody .bet').on('click', function () {
-                var num=Number($(this).closest('.mainbody-box').attr('data-num'));
-                $(this).toggleClass('active')
-                $('.bet-num').text($('.mainbody .bet.active').length)
-                if( $('.game-list').eq(num).hasClass('active') && $('.mainbody .bet.active').length >= 1){
-                    $('.game-list').eq(num).addClass('has-bet')
-                }else if($('.mainbody .bet.active').length == 0){
-                    $('.game-list').eq(num).removeClass('has-bet')
-                }
-            })
+            // $('.mainbody .bet').on('click', function () {
+            //     var num=Number($(this).closest('.mainbody-box').attr('data-num'));
+            //     $(this).toggleClass('active')
+            //     $('.bet-num').text($('.mainbody .bet.active').length)
+            //     if( $('.game-list').eq(num).hasClass('active') && $('.mainbody .bet.active').length >= 1){
+            //         $('.game-list').eq(num).addClass('has-bet')
+            //     }else if($('.mainbody .bet.active').length == 0){
+            //         $('.game-list').eq(num).removeClass('has-bet')
+            //     }
+            // })
         })
     },
     created(){
         this.$nextTick(function(){
-            console.log('created')
             var swiper = new Swiper('.swiper-container', {
                 slidesPerView:2,
                 spaceBetween: 2
@@ -136,7 +136,6 @@ var app=new Vue({
     },
     updated() {
         this.$nextTick(function(){
-            console.log('updated')
             var swiper = new Swiper('.swiper-container', {
                 slidesPerView:2,
                 spaceBetween: 2
@@ -146,7 +145,6 @@ var app=new Vue({
     watch:{
         menuListSelectData:function(){
             this.$nextTick(function(){
-                console.log('watch')
                 var swiper = new Swiper('.swiper-container', {
                     slidesPerView: 3,
                     spaceBetween: 2
