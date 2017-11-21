@@ -434,13 +434,14 @@ var app=new Vue({
     },
     methods:{
         menuListSelect:function(){
-            $(event.target).parent('.menu-group').toggleClass('active')
-            $('.game-list-col').toggleClass('active')
+            $(event.target).parent('.menu-group').addClass('active')
+            $('.game-list-col').addClass('active')
             $('.game-title').text($(event.target).text())
             this.menuListSelectData=$(event.target).data('menu')
         },
         gameListSelect:function(){
             $(event.target).addClass('active').siblings().removeClass('active has-bet');
+            $(event.target).closest('.game-list-col').removeClass('active');
             this.gameListSelectNum=$(event.target).data('list')
         },
         happy10Toggle:function(index){
