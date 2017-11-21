@@ -9,7 +9,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
 	    crossorigin="anonymous">
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/index.css">
+	<style>
+
+	</style>
 </head>
 
 <body style="">
@@ -101,41 +105,467 @@
 						</template>
 					</ul>
 				</div>
-				
 				<template v-if="menuListSelectData == 'lottera' ">
 					<div class="game-list-col p-0">
 						<ul class="game-list-menu text-center">
-							<li v-for="(game,index) in lotteraList" 
-							:class={active:game.active} class="game-list py-3" 
-							:data-list=index 
-							@click="gameListSelect()">{{game.name}}</li>
+							<li v-for="(game,index) in lotteraList" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
 						</ul>
 					</div>
-					
+
 					<div class="col mainbody-box" data-num='0' v-show="gameListSelectNum == 0">
-						<lotter-a0 title="总和、龙虎" :bets="lotter_a"></lotter-a0>
-						<lotter-a0-ball title="第一球"></lotter-a0-ball>
-						<lotter-a0-ball title="第二球"></lotter-a0-ball>
-						<lotter-a0-ball title="第三球"></lotter-a0-ball>
-						<lotter-a0-ball title="第四球"></lotter-a0-ball>
-						<lotter-a0-ball title="第五球"></lotter-a0-ball>
+						<div class="row mainbody">
+							<lotter-title title="总和、龙虎"></lotter-title>
+							<template v-for="bets in lotter_a">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第一球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第二球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第三球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第四球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第五球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
 					</div>
 					<div class="col mainbody-box" data-num='1' v-show="gameListSelectNum == 1">
-						<lotter-a1nunu title="牛牛" :list="nunu"></lotter-a1nunu>
-						<lotter-a1nunu title="梭哈" :list="suoha"></lotter-a1nunu>
+						<div class="row mainbody">
+							<lotter-title title="牛牛"></lotter-title>
+							<template v-for="bets in nunu">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="梭哈"></lotter-title>
+							<template v-for="bets in suoha">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+					<div class="col mainbody-box" data-num='2' v-show="gameListSelectNum == 2">
+						<div class="row mainbody">
+							<lotter-title title="前三"></lotter-title>
+							<template v-for="bets in lotter_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="中三"></lotter-title>
+							<template v-for="bets in lotter_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="後三"></lotter-title>
+							<template v-for="bets in lotter_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
 					</div>
 				</template>
 				<template v-if="menuListSelectData == 'lotterb' ">
 					<div class="game-list-col p-0">
 						<ul class="game-list-menu text-center">
-							<li v-for="(game,index) in lotterbList" 
-							:class={active:game.active} class="game-list py-3" 
-							:data-list=index 
-							@click="gameListSelect()">{{game.name}}</li>
+							<li v-for="(game,index) in lotteraList" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
 						</ul>
 					</div>
-					<lotter-a0 num="0" v-show="gameListSelectNum == 0"></lotter-a0>
-					<lotter-a1nunu num="1" v-show="gameListSelectNum == 1"></lotter-a1nunu>
+
+					<div class="col mainbody-box" data-num='0' v-show="gameListSelectNum == 0">
+						<div class="row mainbody">
+							<lotter-title title="总和、龙虎"></lotter-title>
+							<template v-for="bets in lotter_a">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第一球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第二球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第三球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第四球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第五球"></lotter-title>
+							<template v-for="bets in lotter_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+					<div class="col mainbody-box" data-num='1' v-show="gameListSelectNum == 1">
+						<div class="row mainbody">
+							<lotter-title title="牛牛"></lotter-title>
+							<template v-for="bets in nunu">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="梭哈"></lotter-title>
+							<template v-for="bets in suoha">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+					<div class="col mainbody-box" data-num='2' v-show="gameListSelectNum == 2">
+						<div class="row mainbody">
+							<lotter-title title="前三"></lotter-title>
+							<template v-for="bets in lotter_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="中三"></lotter-title>
+							<template v-for="bets in lotter_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="後三"></lotter-title>
+							<template v-for="bets in lotter_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+				</template>
+				<template v-if="menuListSelectData == 'happy10mina' ">
+					<div class="game-list-col p-0">
+						<ul class="game-list-menu text-center">
+							<li v-for="(game,index) in happy10mina" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
+						</ul>
+					</div>
+
+					<div class="col mainbody-box" data-num='0' v-if="gameListSelectNum == 0">
+						<div class="row mainbody">
+							<lotter-title title="总和"></lotter-title>
+							<template v-for="bets in happy10_a">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第一球"></lotter-title>
+							<template v-for="bets in happy10_balla">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第二球"></lotter-title>
+							<template v-for="bets in happy10_balla">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第三球"></lotter-title>
+							<template v-for="bets in happy10_balla">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第四球"></lotter-title>
+							<template v-for="bets in happy10_balla">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第五球"></lotter-title>
+							<template v-for="bets in happy10_ballb">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第六球"></lotter-title>
+							<template v-for="bets in happy10_ballb">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第七球"></lotter-title>
+							<template v-for="bets in happy10_ballb">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第八球"></lotter-title>
+							<template v-for="bets in happy10_ballb">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+					<div class="col mainbody-box" data-num='1' v-if="gameListSelectNum == 1">
+						<div class="row mainbody">
+							<div class="col swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" 
+										v-for="(list,index) in happy10_con_menu"
+										@click="happy10Toggle(index)"
+										:class={active:list.active}>{{list.name}}</div>
+								</div>
+							</div>
+							<div class="row mainbody mx-0" v-if="happy10a == 0">
+								<lotter-title title="赔率">
+									<span class="bet-item" slot="bets-number">4.9</span>
+								</lotter-title>
+								<template v-for="bets in happy10_ballb">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+							<div class="row mainbody mx-0" v-if="happy10a == 1">
+								<lotter-title title="赔率">
+									<span class="bet-item" slot="bets-number">7.9</span>
+								</lotter-title>
+								<template v-for="bets in happy10_ballb">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+							<div class="row mainbody mx-0" v-if="happy10a == 2">
+								<lotter-title title="赔率">
+									<span class="bet-item" slot="bets-number">2.9</span>
+								</lotter-title>
+								<template v-for="bets in happy10_ballb">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+							<div class="row mainbody mx-0" v-if="happy10a == 3">
+								<lotter-title title="赔率">
+									<span class="bet-item" slot="bets-number">3.9</span>
+								</lotter-title>
+								<template v-for="bets in happy10_ballb">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+							<div class="row mainbody mx-0" v-if="happy10a == 4">
+								<lotter-title title="赔率">
+									<span class="bet-item" slot="bets-number">6.9</span>
+								</lotter-title>
+								<template v-for="bets in happy10_ballb">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+						</div>
+					</div>
+				</template>
+				<template v-if="menuListSelectData == 'pk10' ">
+					<div class="game-list-col p-0">
+						<ul class="game-list-menu text-center">
+							<li v-for="(game,index) in pk10" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
+						</ul>
+					</div>
+
+					<div class="col mainbody-box" data-num='0' v-show="gameListSelectNum == 0">
+						<div class="row mainbody">
+							<lotter-title title="冠、亚军组合"></lotter-title>
+							<template v-for="bets in pk">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="冠军"></lotter-title>
+							<template v-for="(bets,i) in pk_a">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="亚军"></lotter-title>
+							<template v-for="(bets,i) in pk_a">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第三名"></lotter-title>
+							<template v-for="(bets,i) in pk_a">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第四名"></lotter-title>
+							<template v-for="(bets,i) in pk_a">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第五名"></lotter-title>
+							<template v-for="(bets,i) in pk_b">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第六名"></lotter-title>
+							<template v-for="(bets,i) in pk_b">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第七名"></lotter-title>
+							<template v-for="(bets,i) in pk_b">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第八名"></lotter-title>
+							<template v-for="(bets,i) in pk_b">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第九名"></lotter-title>
+							<template v-for="(bets,i) in pk_b">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第十名"></lotter-title>
+							<template v-for="(bets,i) in pk_b">
+								<lotter-a0 :bets="bets" :i="i"></lotter-a0>
+							</template>
+						</div>
+					</div>
+				</template>
+				<template v-if="menuListSelectData == 'elevenList' ">
+					<div class="game-list-col p-0">
+						<ul class="game-list-menu text-center">
+							<li v-for="(game,index) in elevenList" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
+						</ul>
+					</div>
+
+					<div class="col mainbody-box" data-num='0' v-show="gameListSelectNum == 0">
+						<div class="row mainbody">
+							<lotter-title title="总和/龙虎"></lotter-title>
+							<template v-for="bets in eleven_a">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第一球"></lotter-title>
+							<template v-for="bets in eleven_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第二球"></lotter-title>
+							<template v-for="bets in eleven_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第三球"></lotter-title>
+							<template v-for="bets in eleven_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第四球"></lotter-title>
+							<template v-for="bets in eleven_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="第五球"></lotter-title>
+							<template v-for="bets in eleven_ball">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+					<div class="col mainbody-box" data-num='1' v-show="gameListSelectNum == 1">
+						<div class="row mainbody">
+							<lotter-title title="前三"></lotter-title>
+							<template v-for="bets in eleven_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="中三"></lotter-title>
+							<template v-for="bets in eleven_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+						<div class="row mainbody">
+							<lotter-title title="后三"></lotter-title>
+							<template v-for="bets in eleven_baa">
+								<lotter-a0 :bets="bets"></lotter-a0>
+							</template>
+						</div>
+					</div>
+				</template>
+				<template v-if="menuListSelectData == 'order3' ">
+					<div class="game-list-col p-0">
+						<ul class="game-list-menu text-center">
+							<li v-for="(game,index) in order3List" :class={active:game.active} class="game-list py-3" :data-list=index @click="gameListSelect()">{{game.name}}</li>
+						</ul>
+					</div>
+
+					<div class="col mainbody-box" data-num='0' v-show="gameListSelectNum == 0">
+						<div class="row mainbody">
+							<div class="col swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" 
+										v-for="(list,index) in order3_menu"
+										@click="order3Toggle(index)"
+										:class={active:list.active}>{{list.name}}</div>
+								</div>
+							</div>
+							<div class="row mainbody mx-0" v-if="order3 == 0">
+								<template v-for="bets in order3_ball">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+								<template v-for="bets in order3_a">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+							<div class="row mainbody mx-0" v-if="order3 == 1">
+								<template v-for="bets in order3_ball">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+								<template v-for="bets in order3_a">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+							<div class="row mainbody mx-0" v-if="order3 == 2">
+								<template v-for="bets in order3_ball">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+								<template v-for="bets in order3_a">
+									<lotter-a0 :bets="bets"></lotter-a0>
+								</template>
+							</div>
+						</div>
+					</div>
 				</template>
 			</div>
 		</div>
@@ -172,14 +602,18 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script src="https://unpkg.com/vue"></script>
 	<script src="js/lib/jquery-3.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
 	    crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 	    crossorigin="anonymous"></script>
+	<script src="js/swiper.min.js"></script>
 	<script src="js/app.js"></script>
+	<script>
+		
+	</script>
 </body>
 
 </html>

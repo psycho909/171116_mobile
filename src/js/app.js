@@ -1,8 +1,7 @@
 import lotterA0 from '../components/lotter-a0.html'
-import lotterA0Ball from '../components/lotter-a0-ball.html'
-import lotterA1NuNu from '../components/lotter-a1nunu.html'
-import lotterA2 from '../components/bef-and-af.html'
-console.log(123)
+import lotterTitle from '../components/lotter-title.html'
+import vueSwiper from '../components/vue-swiper.html'
+
 var mixinCreated={
     created(){
         this.$nextTick(function(){
@@ -15,16 +14,6 @@ var mixinCreated={
             $('.mainbody-box').height(wHeight-saveHeight+'px')
             $('.menu-group').height(wHeight-saveHeight+'px')
             $('.game-list-menu').height(wHeight-saveHeight+'px')
-            $('.mainbody .bet').on('click', function () {
-                var num=Number($(this).closest('.mainbody-box').attr('data-num'));
-                $(this).toggleClass('active')
-                $('.bet-num').text($('.mainbody .bet.active').length)
-                if( $('.game-list').eq(num).hasClass('active') && $('.mainbody .bet.active').length >= 1){
-                    $('.game-list').eq(num).addClass('has-bet')
-                }else if($('.mainbody .bet.active').length == 0){
-                    $('.game-list').eq(num).removeClass('has-bet')
-                }
-            })
         })
     }
 }
@@ -32,30 +21,38 @@ var mixinCreated={
 Vue.component('lotter-a0',{
     template:lotterA0,
     mixins:[mixinCreated],
-    props:['title','bets'],
+    props:['bets','i'],
     data(){
         return {
+            isActive:false
         }
     },
     methods:{
-        betClick:function(){
-            console.log(this.$refs)
+        betActive:function(){
+            this.isActive=!this.isActive;
         }
     }
 })
-Vue.component('lotter-a0-ball',{
-    template:lotterA0Ball,
-    mixins:[mixinCreated],
+Vue.component('lotter-title',{
+    template:lotterTitle,
     props:['title']
 })
-Vue.component('lotter-a1nunu',{
-    template:lotterA1NuNu,
-    mixins:[mixinCreated],
-    props:['title','list']
-})
-Vue.component('lotter-a2',{
-    template:lotterA2,
-    props:['title']
+Vue.component('vue-swiper',{
+    template:vueSwiper,
+    props:['list'],
+    mounted() {
+        this.$nextTick(function(){
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                spaceBetween: 2
+            });
+        })
+    },
+    data(){
+        return {
+            isActive:false
+        }
+    }
 })
 var menuList=[
     {name:'重慶時時彩',data:'lottera'},
@@ -66,7 +63,7 @@ var menuList=[
     {name:'重慶快樂十分',data:'happy10mind'},
     {name:'北京賽車PK10',data:'pk10'},
     {name:'幸運飛艇',data:'lukyAirShip'},
-    {name:'廣東11選5',data:'11select5'},
+    {name:'廣東11選5',data:'elevenList'},
     {name:'排列三',data:'order3'},
     {name:'福彩3D',data:'3d'},
     {name:'上海時時樂',data:'shanghai'}
@@ -128,47 +125,313 @@ var app=new Vue({
             })
         })
     },
+    created(){
+        this.$nextTick(function(){
+            console.log('created')
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView:2,
+                spaceBetween: 2
+            });
+        })
+    },
+    updated() {
+        this.$nextTick(function(){
+            console.log('updated')
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView:2,
+                spaceBetween: 2
+            });
+        })
+    },
+    watch:{
+        menuListSelectData:function(){
+            this.$nextTick(function(){
+                console.log('watch')
+                var swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 3,
+                    spaceBetween: 2
+                });
+            })
+        }
+    },
     data:{
         menuList:menuList,
         lotteraList:lotteraList,
         lotterbList:lotterbList,
+        happy10mina:happy10mina,
+        happy10minb:happy10minb,
+        happy10minc:happy10minc,
+        pk10:pk10,
+        lukyAirShip:lukyAirShip,
+        elevenList:elevenList,
+        order3List:order3List,
+        threedList:threedList,
+        shanghaiList:shanghaiList,
         menuListSelectData:'lottera',
         gameListSelectNum:0,
         bet_length:0,
+        active:false,
+        happy10a:0,
+        order3:0,
         lotter_a:[
-            {name:'总合大',num:1.982,col:'col-4'},
-            {name:'总合小',num:1.982,col:'col-4'},
-            {name:'总合单',num:1.982,col:'col-4'},
-            {name:'总合双',num:1.982,col:'col-4'},
-            {name:'龙',num:1.982,col:'col-6'},
-            {name:'虎',num:1.982,col:'col-6'},
-            {name:'和',num:1.982,col:'col-6'},
+            {name:'总合大',num:1.982,col:'col-6',ball:false},
+            {name:'总合小',num:1.982,col:'col-6',ball:false},
+            {name:'总合单',num:1.982,col:'col-6',ball:false},
+            {name:'总合双',num:1.982,col:'col-6',ball:false},
+            {name:'龙',num:1.982,col:'col-4',ball:false},
+            {name:'虎',num:1.982,col:'col-4',ball:false},
+            {name:'和',num:1.982,col:'col-4',ball:false},
+        ],
+        lotter_ball:[
+            {name:'0',num:9.85,col:'col-6',ball:true},
+            {name:'1',num:9.85,col:'col-6',ball:true},
+            {name:'2',num:9.85,col:'col-6',ball:true},
+            {name:'3',num:9.85,col:'col-6',ball:true},
+            {name:'4',num:9.85,col:'col-6',ball:true},
+            {name:'5',num:9.85,col:'col-6',ball:true},
+            {name:'6',num:9.85,col:'col-6',ball:true},
+            {name:'7',num:9.85,col:'col-6',ball:true},
+            {name:'8',num:9.85,col:'col-6',ball:true},
+            {name:'9',num:9.85,col:'col-6',ball:true},
+            {name:'大',num:9.85,col:'col-6',ball:false},
+            {name:'小',num:9.85,col:'col-6',ball:false},
+            {name:'單',num:9.85,col:'col-6',ball:false},
+            {name:'雙',num:9.85,col:'col-6',ball:false},
         ],
         nunu:[
-            {name:'牛1',num:94.8},
-            {name:'牛2',num:94.8},
-            {name:'牛3',num:94.8},
-            {name:'牛4',num:94.8},
-            {name:'牛5',num:94.8},
-            {name:'牛6',num:94.8},
-            {name:'牛7',num:94.8},
-            {name:'牛8',num:94.8},
-            {name:'牛9',num:94.8},
-            {name:'無牛',num:94.8},
-            {name:'牛牛',num:94.8},
-            {name:'牛大',num:94.8},
-            {name:'牛單',num:94.8},
-            {name:'牛雙',num:94.8},
-            {name:'牛小',num:94.8},
+            {name:'牛1',num:94.8,col:'col-4',ball:false},
+            {name:'牛2',num:94.8,col:'col-4',ball:false},
+            {name:'牛3',num:94.8,col:'col-4',ball:false},
+            {name:'牛4',num:94.8,col:'col-4',ball:false},
+            {name:'牛5',num:94.8,col:'col-4',ball:false},
+            {name:'牛6',num:94.8,col:'col-4',ball:false},
+            {name:'牛7',num:94.8,col:'col-4',ball:false},
+            {name:'牛8',num:94.8,col:'col-4',ball:false},
+            {name:'牛9',num:94.8,col:'col-4',ball:false},
+            {name:'無牛',num:94.8,col:'col-4',ball:false},
+            {name:'牛牛',num:94.8,col:'col-4',ball:false},
+            {name:'牛大',num:94.8,col:'col-4',ball:false},
+            {name:'牛單',num:94.8,col:'col-4',ball:false},
+            {name:'牛雙',num:94.8,col:'col-4',ball:false},
+            {name:'牛小',num:94.8,col:'col-4',ball:false},
         ],
         suoha:[
-            {name:'四條',num:94.8},
-            {name:'三條',num:94.8},
-            {name:'葫蘆',num:94.8},
-            {name:'順子',num:94.8},
-            {name:'兩對',num:94.8},
-            {name:'一對',num:94.8},
-            {name:'散號',num:94.8}
+            {name:'四條',num:94.8,col:'col-4',ball:false},
+            {name:'三條',num:94.8,col:'col-4',ball:false},
+            {name:'葫蘆',num:94.8,col:'col-4',ball:false},
+            {name:'順子',num:94.8,col:'col-4',ball:false},
+            {name:'兩對',num:94.8,col:'col-4',ball:false},
+            {name:'一對',num:94.8,col:'col-4',ball:false},
+            {name:'散號',num:94.8,col:'col-4',ball:false}
+        ],
+        lotter_baa:[
+            {name:'豹子',num:70,col:'col-6',ball:false},
+            {name:'順子',num:70,col:'col-6',ball:false},
+            {name:'對子',num:70,col:'col-6',ball:false},
+            {name:'杂六',num:70,col:'col-6',ball:false},
+            {name:'半順',num:70,col:'col-12',ball:false},
+        ],
+        happy10_a:[
+            {name:'总和大',num:70,col:'col-6',ball:false},
+            {name:'总和小',num:70,col:'col-6',ball:false},
+            {name:'总和单',num:70,col:'col-6',ball:false},
+            {name:'总和双',num:70,col:'col-6',ball:false},
+        ],
+        happy10_balla:[
+            {name:1,num:70,col:'col-6',ball:true},
+            {name:2,num:70,col:'col-6',ball:true},
+            {name:3,num:70,col:'col-6',ball:true},
+            {name:4,num:70,col:'col-6',ball:true},
+            {name:5,num:70,col:'col-6',ball:true},
+            {name:6,num:70,col:'col-6',ball:true},
+            {name:7,num:70,col:'col-6',ball:true},
+            {name:8,num:70,col:'col-6',ball:true},
+            {name:9,num:70,col:'col-6',ball:true},
+            {name:10,num:70,col:'col-6',ball:true},
+            {name:11,num:70,col:'col-6',ball:true},
+            {name:12,num:70,col:'col-6',ball:true},
+            {name:13,num:70,col:'col-6',ball:true},
+            {name:14,num:70,col:'col-6',ball:true},
+            {name:15,num:70,col:'col-6',ball:true},
+            {name:16,num:70,col:'col-6',ball:true},
+            {name:17,num:70,col:'col-6',ball:true},
+            {name:18,num:70,col:'col-6',ball:true},
+            {name:19,num:70,col:'col-6',ball:true},
+            {name:20,num:70,col:'col-6',ball:true},
+            {name:'大',num:70,col:'col-6',ball:false},
+            {name:'小',num:70,col:'col-6',ball:false},
+            {name:'单',num:70,col:'col-6',ball:false},
+            {name:'双',num:70,col:'col-6',ball:false},
+            {name:'龙',num:70,col:'col-6',ball:false},
+            {name:'虎',num:70,col:'col-6',ball:false},
+        ],
+        happy10_ballb:[
+            {name:1,num:70,col:'col-4',ball:true},
+            {name:2,num:70,col:'col-4',ball:true},
+            {name:3,num:70,col:'col-4',ball:true},
+            {name:4,num:70,col:'col-4',ball:true},
+            {name:5,num:70,col:'col-4',ball:true},
+            {name:6,num:70,col:'col-4',ball:true},
+            {name:7,num:70,col:'col-4',ball:true},
+            {name:8,num:70,col:'col-4',ball:true},
+            {name:9,num:70,col:'col-4',ball:true},
+            {name:10,num:70,col:'col-4',ball:true},
+            {name:11,num:70,col:'col-4',ball:true},
+            {name:12,num:70,col:'col-4',ball:true},
+            {name:13,num:70,col:'col-4',ball:true},
+            {name:14,num:70,col:'col-4',ball:true},
+            {name:15,num:70,col:'col-4',ball:true},
+            {name:16,num:70,col:'col-4',ball:true},
+            {name:17,num:70,col:'col-4',ball:true},
+            {name:18,num:70,col:'col-4',ball:true},
+            {name:19,num:70,col:'col-6',ball:true},
+            {name:20,num:70,col:'col-6',ball:true},
+            {name:'大',num:70,col:'col-6',ball:false},
+            {name:'小',num:70,col:'col-6',ball:false},
+            {name:'单',num:70,col:'col-6',ball:false},
+            {name:'双',num:70,col:'col-6',ball:false}
+        ],
+        happy10_con_menu:[
+            {name:'任选一',active:true},
+            {name:'任选二',active:false},
+            {name:'任选三',active:false},
+            {name:'任选四',active:false},
+            {name:'任选五',active:false},
+        ],
+        happy10_con:[
+            {name:1,num:false,col:'col-4',ball:true},
+            {name:2,num:false,col:'col-4',ball:true},
+            {name:3,num:false,col:'col-4',ball:true},
+            {name:4,num:false,col:'col-4',ball:true},
+            {name:5,num:false,col:'col-4',ball:true},
+            {name:6,num:false,col:'col-4',ball:true},
+            {name:7,num:false,col:'col-4',ball:true},
+            {name:8,num:false,col:'col-4',ball:true},
+            {name:9,num:false,col:'col-4',ball:true},
+            {name:10,num:false,col:'col-4',ball:true},
+            {name:11,num:false,col:'col-4',ball:true},
+            {name:12,num:false,col:'col-4',ball:true},
+            {name:13,num:false,col:'col-4',ball:true},
+            {name:14,num:false,col:'col-4',ball:true},
+            {name:15,num:false,col:'col-4',ball:true},
+            {name:16,num:false,col:'col-4',ball:true},
+            {name:17,num:false,col:'col-4',ball:true},
+            {name:18,num:false,col:'col-4',ball:true},
+            {name:19,num:false,col:'col-4',ball:true},
+            {name:20,num:false,col:'col-4',ball:true}
+        ],
+        pk:[
+            {name:3,num:20.6,col:'col-4',ball:false},
+            {name:4,num:20.6,col:'col-4',ball:false},
+            {name:5,num:20.6,col:'col-4',ball:false},
+            {name:6,num:20.6,col:'col-4',ball:false},
+            {name:7,num:20.6,col:'col-4',ball:false},
+            {name:8,num:20.6,col:'col-4',ball:false},
+            {name:9,num:20.6,col:'col-4',ball:false},
+            {name:10,num:20.6,col:'col-4',ball:false},
+            {name:11,num:20.6,col:'col-4',ball:false},
+            {name:12,num:20.6,col:'col-4',ball:false},
+            {name:13,num:20.6,col:'col-4',ball:false},
+            {name:14,num:20.6,col:'col-4',ball:false},
+            {name:15,num:20.6,col:'col-6',ball:false},
+            {name:16,num:20.6,col:'col-6',ball:false},
+        ],
+        pk_a:[
+            {name:1,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:2,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:3,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:4,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:5,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:6,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:7,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:8,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:9,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:10,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:'大',num:20.6,col:'col-6',circle:false,ball:false},
+            {name:'小',num:20.6,col:'col-6',circle:false,ball:false},
+            {name:'单',num:20.6,col:'col-6',circle:false,ball:false},
+            {name:'双',num:20.6,col:'col-6',circle:false,ball:false},
+            {name:'龙',num:20.6,col:'col-6',circle:false,ball:false},
+            {name:'虎',num:20.6,col:'col-6',circle:false,ball:false},
+        ],
+        pk_b:[
+            {name:1,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:2,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:3,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:4,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:5,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:6,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:7,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:8,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:9,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:10,num:20.6,col:'col-6',circle:'circle',ball:false},
+            {name:'大',num:20.6,col:'col-6',ball:false},
+            {name:'小',num:20.6,col:'col-6',ball:false},
+            {name:'单',num:20.6,col:'col-6',ball:false},
+            {name:'双',num:20.6,col:'col-6',ball:false}
+        ],
+        eleven_a:[
+            {name:'总和大',num:20.6,col:'col-6',ball:false},
+            {name:'总和小',num:20.6,col:'col-6',ball:false},
+            {name:'总和单',num:20.6,col:'col-6',ball:false},
+            {name:'总和双',num:20.6,col:'col-6',ball:false},
+            {name:'总和龙',num:20.6,col:'col-6',ball:false},
+            {name:'总和虎',num:20.6,col:'col-6',ball:false},
+        ],
+        eleven_ball:[
+            {name:1,num:20.6,col:'col-4',ball:true},
+            {name:2,num:20.6,col:'col-4',ball:true},
+            {name:3,num:20.6,col:'col-4',ball:true},
+            {name:4,num:20.6,col:'col-4',ball:true},
+            {name:5,num:20.6,col:'col-4',ball:true},
+            {name:6,num:20.6,col:'col-4',ball:true},
+            {name:7,num:20.6,col:'col-4',ball:true},
+            {name:8,num:20.6,col:'col-4',ball:true},
+            {name:9,num:20.6,col:'col-4',ball:true},
+            {name:10,num:20.6,col:'col-6',ball:true},
+            {name:11,num:20.6,col:'col-6',ball:true},
+            {name:'大',num:20.6,col:'col-6',ball:false},
+            {name:'小',num:20.6,col:'col-6',ball:false},
+            {name:'单',num:20.6,col:'col-6',ball:false},
+            {name:'双',num:20.6,col:'col-6',ball:false},
+        ],
+        eleven_baa:[
+            {name:'順子',num:70,col:'col-6',ball:false},
+            {name:'杂六',num:70,col:'col-6',ball:false},
+        ],
+        order3_menu:[
+            {name:'第一球',active:true},
+            {name:'第二球',active:false},
+            {name:'第三球',active:false},
+        ],
+        order3_ball:[
+            {name:0,num:33,col:'col-6',ball:true},
+            {name:1,num:33,col:'col-6',ball:true},
+            {name:2,num:33,col:'col-6',ball:true},
+            {name:3,num:33,col:'col-6',ball:true},
+            {name:4,num:33,col:'col-6',ball:true},
+            {name:5,num:33,col:'col-6',ball:true},
+            {name:6,num:33,col:'col-6',ball:true},
+            {name:7,num:33,col:'col-6',ball:true},
+            {name:8,num:33,col:'col-6',ball:true},
+            {name:9,num:33,col:'col-6',ball:true},
+            {name:'大',num:33,col:'col-6',ball:false},
+            {name:'小',num:33,col:'col-6',ball:false},
+            {name:'单',num:33,col:'col-6',ball:false},
+            {name:'双',num:33,col:'col-6',ball:false},
+        ],
+        order3_a:[
+            {name:'总和大',num:20,col:'col-6',ball:false},
+            {name:'总和小',num:20,col:'col-6',ball:false},
+            {name:'总和单',num:20,col:'col-6',ball:false},
+            {name:'总和双',num:20,col:'col-6',ball:false},
+            {name:'豹子',num:20,col:'col-6',ball:false},
+            {name:'顺子',num:20,col:'col-6',ball:false},
+            {name:'对子',num:20,col:'col-6',ball:false},
+            {name:'杂六',num:20,col:'col-6',ball:false},
+            {name:'龙',num:20,col:'col-4',ball:false},
+            {name:'虎',num:20,col:'col-4',ball:false},
+            {name:'和',num:20,col:'col-4',ball:false},
         ]
     },
     methods:{
@@ -177,11 +440,28 @@ var app=new Vue({
             $('.game-list-col').toggleClass('active')
             $('.game-title').text($(event.target).text())
             this.menuListSelectData=$(event.target).data('menu')
-            console.log(this.menuListSelectData)
         },
         gameListSelect:function(){
             $(event.target).addClass('active').siblings().removeClass('active has-bet');
             this.gameListSelectNum=$(event.target).data('list')
+        },
+        happy10Toggle:function(index){
+            this.happy10_con_menu.filter((v)=>{
+                if(v.active){
+                    return v.active=false;
+                }
+            })
+            this.happy10_con_menu[index].active=!this.happy10_con_menu[index].active
+            this.happy10a=index;
+        },
+        order3Toggle:function(index){
+            this.order3_menu.filter((v)=>{
+                if(v.active){
+                    return v.active=false;
+                }
+            })
+            this.order3_menu[index].active=!this.order3_menu[index].active
+            this.order3=index;
         }
     }
 })
