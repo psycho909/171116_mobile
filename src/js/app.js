@@ -29,8 +29,10 @@ Vue.component('lotter-a0',{
         }
     },
     methods:{
-        betActive:function(){
+        bet_active:function(){
             this.isActive=!this.isActive;
+            var _self=this;
+            this.$emit('bet_active',_self.isActive)
         }
     }
 })
@@ -91,6 +93,10 @@ var happy10minc=[
     {name:'整合',active:true},
     {name:'连码',active:false},
 ]
+var happy10mind=[
+    {name:'整合',active:true},
+    {name:'连码',active:false},
+]
 var pk10=[
     {name:'整合',active:true}
 ]
@@ -112,21 +118,11 @@ var shanghaiList=[
 ]
 var app=new Vue({
     el:'#app',
-    created(){
-        this.$nextTick(function(){
-            // $('.mainbody .bet').on('click', function () {
-            //     var num=Number($(this).closest('.mainbody-box').attr('data-num'));
-            //     $(this).toggleClass('active')
-            //     $('.bet-num').text($('.mainbody .bet.active').length)
-            //     if( $('.game-list').eq(num).hasClass('active') && $('.mainbody .bet.active').length >= 1){
-            //         $('.game-list').eq(num).addClass('has-bet')
-            //     }else if($('.mainbody .bet.active').length == 0){
-            //         $('.game-list').eq(num).removeClass('has-bet')
-            //     }
-            // })
-        })
+    beforeCreate(){
+        console.log('beforeCreate')
     },
     created(){
+        console.log('created')
         this.$nextTick(function(){
             var swiper = new Swiper('.swiper-container', {
                 slidesPerView:2,
@@ -134,7 +130,12 @@ var app=new Vue({
             });
         })
     },
+    mounted:function(){
+        console.log('mounted')
+        $('.mainbody-box-loading').remove()
+    },
     updated() {
+        console.log('updated')
         this.$nextTick(function(){
             var swiper = new Swiper('.swiper-container', {
                 slidesPerView:2,
@@ -152,6 +153,9 @@ var app=new Vue({
             })
         }
     },
+    computed:{
+        
+    },
     data:{
         menuList:menuList,
         lotteraList:lotteraList,
@@ -159,6 +163,7 @@ var app=new Vue({
         happy10mina:happy10mina,
         happy10minb:happy10minb,
         happy10minc:happy10minc,
+        happy10mind:happy10mind,
         pk10:pk10,
         lukyAirShip:lukyAirShip,
         elevenList:elevenList,
@@ -166,8 +171,9 @@ var app=new Vue({
         threedList:threedList,
         shanghaiList:shanghaiList,
         menuListSelectData:'lottera',
+        menuListSelectCheck:true,
         gameListSelectNum:0,
-        bet_length:0,
+        bets_length:0,
         active:false,
         happy10a:0,
         order3:0,
@@ -433,16 +439,29 @@ var app=new Vue({
         ]
     },
     methods:{
-        menuListSelect:function(){
-            $(event.target).parent('.menu-group').addClass('active')
-            $('.game-list-col').addClass('active')
-            $('.game-title').text($(event.target).text())
-            this.menuListSelectData=$(event.target).data('menu')
+        menuListSelect:function(event){
+            if(this.menuListSelectCheck){
+                $(event.target).parent('.menu-group').addClass('active')
+                this.menuListSelectData=$(event.target).data('menu')
+                setTimeout(function(){
+                    $('.game-list-col').addClass('active').end().find('.game-list').eq(0).addClass('active').siblings().removeClass('active');
+                },500)
+                $('.game-title').text($(event.target).text())
+               
+                this.gameListSelectNum=0;
+                this.menuListSelectCheck=false;
+            }else{
+                return;
+            }
+            console.log(this.menuListSelectCheck)
+            
         },
-        gameListSelect:function(){
+        gameListSelect:function(event){
             $(event.target).addClass('active').siblings().removeClass('active has-bet');
             $(event.target).closest('.game-list-col').removeClass('active');
             this.gameListSelectNum=$(event.target).data('list')
+            this.menuListSelectCheck=true;
+            console.log(this.menuListSelectCheck)
         },
         happy10Toggle:function(index){
             this.happy10_con_menu.filter((v)=>{
@@ -461,6 +480,15 @@ var app=new Vue({
             })
             this.order3_menu[index].active=!this.order3_menu[index].active
             this.order3=index;
+        },
+        get_bets_length:function(isActive){
+            if(isActive){
+                this.bets_length+=1
+            }else{
+                this.bets_length-=1
+            }
+            document.querySelector('.bet-num').textContent=this.bets_length
+            console.log(this.bets_length,isActive)
         }
     }
 })

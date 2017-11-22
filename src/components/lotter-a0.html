@@ -1,4 +1,4 @@
-<div class="bet" :class='[bets.col,{active:isActive}]' @click="betActive()">
+<div class="bet" :class='[bets.col,{active:isActive}]' @click="bet_active()">
     <span class="bet-content" :class="[{ball:bets.ball},bets.circle?bets.circle+(i+1):'',bets.circle?bets.circle:'']">{{bets.name}}</span>
     <span class="bet-item" v-if="typeof bets.num == 'number'">{{bets.num}}</span>
 </div>
