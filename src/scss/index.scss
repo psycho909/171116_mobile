@@ -68,6 +68,12 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 .game-wrap{
 	@include media-breakpoint-up(xs){
@@ -104,7 +110,7 @@ body{
 	}
 }
 
-.oi-menu{
+.fa-bars{
 	cursor: pointer;
 	& + .dropdown-menu-right{
 		top:2.3rem;
@@ -433,6 +439,12 @@ body{
 		background-color: rgba(255,255,255,.25);
 	}
 }
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active 在低于版本 2.1.8 中 */ {
+	opacity: 0
+  }
 @keyframes superScaleIn {
     from {
         transform:translate(-50%,-50%) scale(1.2);

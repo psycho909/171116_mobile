@@ -125,7 +125,7 @@ var app=new Vue({
         console.log('created')
         this.$nextTick(function(){
             var swiper = new Swiper('.swiper-container', {
-                slidesPerView:2,
+                slidesPerView:3,
                 spaceBetween: 2
             });
         })
@@ -138,7 +138,7 @@ var app=new Vue({
         console.log('updated')
         this.$nextTick(function(){
             var swiper = new Swiper('.swiper-container', {
-                slidesPerView:2,
+                slidesPerView:3,
                 spaceBetween: 2
             });
         })
@@ -220,13 +220,13 @@ var app=new Vue({
             {name:'牛小',num:94.8,col:'col-4',ball:false},
         ],
         suoha:[
-            {name:'四條',num:94.8,col:'col-4',ball:false},
-            {name:'三條',num:94.8,col:'col-4',ball:false},
-            {name:'葫蘆',num:94.8,col:'col-4',ball:false},
-            {name:'順子',num:94.8,col:'col-4',ball:false},
-            {name:'兩對',num:94.8,col:'col-4',ball:false},
-            {name:'一對',num:94.8,col:'col-4',ball:false},
-            {name:'散號',num:94.8,col:'col-4',ball:false}
+            {name:'四條',num:94.8,col:'col-6',ball:false},
+            {name:'三條',num:94.8,col:'col-6',ball:false},
+            {name:'葫蘆',num:94.8,col:'col-6',ball:false},
+            {name:'順子',num:94.8,col:'col-6',ball:false},
+            {name:'兩對',num:94.8,col:'col-6',ball:false},
+            {name:'一對',num:94.8,col:'col-6',ball:false},
+            {name:'散號',num:94.8,col:'col-12',ball:false}
         ],
         lotter_baa:[
             {name:'豹子',num:70,col:'col-6',ball:false},
@@ -459,6 +459,7 @@ var app=new Vue({
         gameListSelect:function(event){
             $(event.target).addClass('active').siblings().removeClass('active has-bet');
             $(event.target).closest('.game-list-col').removeClass('active');
+            $(".menu-group").removeClass('active');
             this.gameListSelectNum=$(event.target).data('list')
             this.menuListSelectCheck=true;
             console.log(this.menuListSelectCheck)

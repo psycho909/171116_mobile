@@ -76,6 +76,11 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @media (min-width: 576px) {
@@ -121,49 +126,49 @@ body {
   font-weight: 700;
 }
 
-.oi-menu {
+.fa-bars {
   cursor: pointer;
 }
 
-.oi-menu + .dropdown-menu-right {
+.fa-bars + .dropdown-menu-right {
   top: 2.3rem;
   right: 0;
   left: auto;
   min-width: 8rem;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item {
+.fa-bars + .dropdown-menu-right .dropdown-item {
   padding: .4rem 0;
   font-weight: 700;
   border-bottom: 1px solid #e6e6e6;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item span {
+.fa-bars + .dropdown-menu-right .dropdown-item span {
   display: block;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item span:last-child {
+.fa-bars + .dropdown-menu-right .dropdown-item span:last-child {
   color: red;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item:active {
+.fa-bars + .dropdown-menu-right .dropdown-item:active {
   color: #000;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item:hover {
+.fa-bars + .dropdown-menu-right .dropdown-item:hover {
   background-color: transparent;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item:last-child {
+.fa-bars + .dropdown-menu-right .dropdown-item:last-child {
   border-bottom: 1px solid transparent;
   background-color: #e6e6e6;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-item:last-child span:first-child {
+.fa-bars + .dropdown-menu-right .dropdown-item:last-child span:first-child {
   color: #548ae4;
 }
 
-.oi-menu + .dropdown-menu-right .dropdown-divider {
+.fa-bars + .dropdown-menu-right .dropdown-divider {
   margin: 0;
 }
 
@@ -576,6 +581,15 @@ body {
 .swiper-slide.active {
   color: #000;
   background-color: rgba(255, 255, 255, 0.25);
+}
+
+.fade-enter-active, .fade-leave-active {
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 @-webkit-keyframes superScaleIn {
