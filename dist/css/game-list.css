@@ -1,0 +1,296 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-size: cover;
+  font-family: "微软雅黑", "Microsoft YaHei", Tahoma, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+body {
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 576px) {
+  .game-wrap {
+    background: -webkit-linear-gradient(45deg, #bcb192 0%, #5795c2 100%);
+  }
+}
+
+@media (max-width: 576px) {
+  .game-wrap {
+    background: #5d9dc0 url("../images/bg2.jpg");
+  }
+}
+
+.game-header-bg {
+  border-bottom: 1px solid #fff;
+  padding: 0rem 1rem;
+}
+
+.game-header-bg .home {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.game-header-bg .home:hover {
+  color: #fff;
+}
+
+.game-header-bg .game-title {
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+
+.game-header-bg .game-title:hover {
+  text-decoration: none;
+}
+
+.game-header-bg .fa-bars {
+  font-size: 1.4rem;
+}
+
+.fa-bars {
+  cursor: pointer;
+}
+
+.fa-bars + .dropdown-menu-right {
+  top: 2.3rem;
+  right: 0;
+  left: auto;
+  min-width: 8rem;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item {
+  padding: .4rem 0;
+  font-weight: 700;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item span {
+  display: block;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item span:last-child {
+  color: red;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item:active {
+  color: #000;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item:hover {
+  background-color: transparent;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item:last-child {
+  border-bottom: 1px solid transparent;
+  background-color: #e6e6e6;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-item:last-child span:first-child {
+  color: #548ae4;
+}
+
+.fa-bars + .dropdown-menu-right .dropdown-divider {
+  margin: 0;
+}
+
+.dropdown-menu-right {
+  top: 35px;
+  right: -12px;
+  left: auto;
+  min-width: 8rem;
+}
+
+.game-menu .dropdown-menu .dropdown-item {
+  font-weight: 700;
+}
+
+.game-menu .dropdown-menu .dropdown-item span {
+  display: block;
+}
+
+.game-menu .dropdown-menu .dropdown-item span:last-child {
+  color: red;
+}
+
+.dropdown-item {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.dropdown-item:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+.dropdown-item:last-child:hover {
+  background-color: transparent;
+}
+
+.user-info {
+  border-bottom: solid 1px rgba(255, 255, 255, 0.26);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.user-info .user-wrap {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.user-info .user-money {
+  background-repeat: no-repeat;
+  background-position: center left;
+  font-size: 1.3rem;
+  color: #fff;
+  padding-left: 1.8rem;
+  background-size: 1.5rem;
+}
+
+.user-info .user-money:hover {
+  text-decoration: none;
+}
+
+.user-info .user-transfer .btn-transfer {
+  font-size: 0.5rem;
+  background-color: rgba(250, 252, 250, 0.01);
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 1px 1px 0 rgba(250, 250, 250, 0.22);
+          box-shadow: inset 1px 1px 0 rgba(250, 250, 250, 0.22);
+  color: #fff;
+  cursor: pointer;
+}
+
+.user-info .user-service {
+  font-size: 0.5rem;
+  background-color: rgba(250, 252, 250, 0.01);
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 1px 1px 0 rgba(250, 250, 250, 0.22);
+          box-shadow: inset 1px 1px 0 rgba(250, 250, 250, 0.22);
+  color: #fff;
+  cursor: pointer;
+}
+
+.oi-volume-high {
+  font-size: 24px;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.329);
+}
+
+.notice .marquee {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.329);
+}
+
+.game-list {
+  display: block;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.22);
+  -webkit-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.3), inset 0 0 6px rgba(255, 255, 255, 0.3);
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.3), inset 0 0 6px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+.game-list:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.game-list-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.game-list-time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3), inset 0px 0px 3px rgba(255, 255, 255, 0.3);
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3), inset 0px 0px 3px rgba(255, 255, 255, 0.3);
+  display: block;
+  border-radius: 6px;
+}
+
+.add-height {
+  height: 4.6rem;
+}
+
+.game-content-wrap .row .col-6:nth-last-child(1) {
+  margin-bottom: 1rem;
+}
+
+.game-content-wrap .row .col-6:nth-last-child(2) {
+  margin-bottom: 1rem;
+}
