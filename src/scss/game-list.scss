@@ -1,110 +1,129 @@
 @import '_reset';
-@mixin media-breakpoint-up($size){
-	@if $size == 'xs'{
-		@media (min-width: 576px) {
-			@content;
-		}
-	}
-}
-@mixin media-breakpoint-down($size){
-	@if $size == 'xs'{
-		@media (max-width: 576px) {
-			@content;
-		}
-	}
+@mixin media-breakpoint-up($size) {
+    @if $size=='xs' {
+        @media (min-width: 576px) {
+            @content;
+        }
+    }
 }
 
+@mixin media-breakpoint-down($size) {
+    @if $size=='xs' {
+        @media (max-width: 576px) {
+            @content;
+        }
+    }
+}
+
+$blue9:#33A1FF;
 body {
     background-size: cover;
     font-family: "微软雅黑", "Microsoft YaHei", Tahoma, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-html{
-	@include media-breakpoint-up(xs){
-		font-size: 16px
-	}
-	@include media-breakpoint-down(xs){
-		font-size: 15px
-	}
-}
-body{
-	overflow: hidden;
-	background-size: cover;
-	background-repeat: no-repeat;
-	font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+
+html {
+    @include media-breakpoint-up(xs) {
+        font-size: 16px
+    }
+    @include media-breakpoint-down(xs) {
+        font-size: 15px
+    }
 }
 
-.game-wrap{
-	@include media-breakpoint-up(xs){
-		background: -webkit-linear-gradient(45deg, rgba(188,177,146,1) 0%, rgba(87,149,194,1) 100%);
-	}
-	@include media-breakpoint-down(xs){
-		background:#5d9dc0 url('../images/bg2.jpg');
-	}
+body {
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "微软雅黑", "Microsoft YaHei", Tahoma, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @include media-breakpoint-up(xs) {
+        background: -webkit-linear-gradient(45deg, rgba(188, 177, 146, 1) 0%, rgba(87, 149, 194, 1) 100%);
+    }
+    @include media-breakpoint-down(xs) {
+        background: #5d9dc0 url('../images/bg2.jpg');
+    }
 }
-.game-header-bg{
-	border-bottom:1px solid #fff;
-    padding:0rem 1rem;
-    .home{
-        color:#fff;
+
+.game-wrap {
+    @include media-breakpoint-up(xs) {
+        background: -webkit-linear-gradient(45deg, rgba(188, 177, 146, 1) 0%, rgba(87, 149, 194, 1) 100%);
+    }
+    @include media-breakpoint-down(xs) {
+        background: #5d9dc0 url('../images/bg2.jpg');
+    }
+}
+
+.game-header-bg {
+    border-bottom: 1px solid #fff;
+    padding: 0rem 1rem;
+    .home {
+        color: #fff;
         font-size: 1.5rem;
-        &:hover{
-            color:#fff;
+        &:hover {
+            color: #fff;
         }
     }
-	.game-title{
-		color:#fff;
-		font-weight: 900;
-		font-size: 1.4rem;
-		&:hover{
-			text-decoration: none;
-		}
-	}
-	.fa-bars{
+    .game-title {
+        color: #fff;
+        font-weight: 900;
+        font-size: 1.8rem;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .fa-bars {
         font-size: 1.4rem;
+    }
+    .back {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+    .deposit {
+        font-size: 1.4rem;
+        color: #fff;
     }
 }
 
-.fa-bars{
-	cursor: pointer;
-	& + .dropdown-menu-right{
-		top:2.3rem;
-		right: 0;
-		left: auto;
-		min-width:8rem;
-		.dropdown-item{
-			padding: .4rem 0;
-			font-weight: 700;
-			border-bottom:1px solid #e6e6e6;
-			span{
-				display: block;
-				&:last-child{
-					color:red;
-				}
-			}
-			&:active{
-				color:#000;
-			}
-			&:hover{
-				background-color: transparent;
-			}
-			&:last-child{
-				border-bottom:1px solid transparent;
-				span:first-child{
-					color:#548ae4;
-				}
-				background-color: #e6e6e6;
-			}
-		}
-		.dropdown-divider{
-			margin: 0;
-		}
-	}
+.fa-bars {
+    cursor: pointer;
+    &+.dropdown-menu-right {
+        top: 2.3rem;
+        right: 0;
+        left: auto;
+        min-width: 8rem;
+        .dropdown-item {
+            padding: .4rem 0;
+            font-weight: 700;
+            border-bottom: 1px solid #e6e6e6;
+            span {
+                display: block;
+                &:last-child {
+                    color: red;
+                }
+            }
+            &:active {
+                color: #000;
+            }
+            &:hover {
+                background-color: transparent;
+            }
+            &:last-child {
+                border-bottom: 1px solid transparent;
+                span:first-child {
+                    color: #548ae4;
+                }
+                background-color: #e6e6e6;
+            }
+        }
+        .dropdown-divider {
+            margin: 0;
+        }
+    }
 }
 
 .dropdown-menu-right {
@@ -217,16 +236,106 @@ body{
     display: block;
     border-radius: 6px;
 }
-.add-height{
-	height: 4.6rem;
+
+.add-height {
+    height: 4.6rem;
 }
-.game-content-wrap{
-    .row{
-        .col-6:nth-last-child(1){
-            margin-bottom: 1rem;
+
+.game-content-wrap {
+    .row {
+        .col-6:nth-last-child(1) {
+            margin-bottom: 2rem;
         }
-        .col-6:nth-last-child(2){
-            margin-bottom: 1rem;
+        .col-6:nth-last-child(2) {
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.game-convert-wrap {
+    .money-bag-card {
+        background-color: rgba(250, 250, 250, .1);
+        .card-header {
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+        }
+        .card-body {
+            background-color: transparent;
+            font-weight: 900;
+            font-size: 2rem;
+            color: #fff;
+            .fa {
+                cursor: pointer;
+            }
+        }
+    }
+    .money-text {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    .input-money {
+        position: relative;
+        .fa-times{
+            position: absolute;
+            top: 50%;
+            right: 18px;
+            transform: translateY(-50%);
+            color:#fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+        input {
+            background-color: rgba(250, 250, 250, .1);
+            font-size: 1.6rem;
+            box-shadow: inset 0 1px 1px rgba(250, 250, 250, .3), 0 0 5px rgba(0, 0, 0, .15);
+            border-radius: .25rem .25rem .25rem .25rem;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, .3);
+            border-right: 1px solid rgba(0, 0, 0, .3);
+            padding: .8rem;
+            color: #fff;
+            font-weight: 700;
+            &:focus {
+                background-color: rgba(250, 250, 250, .1);
+                border: none;
+                border-bottom: 1px solid rgba(0, 0, 0, .3);
+                border-right: 1px solid rgba(0, 0, 0, .3);
+                box-shadow: inset 0 1px 1px rgba(250, 250, 250, .3), 0 0 5px rgba(0, 0, 0, .15);
+            }
+        }
+    }
+    .money {
+        text-align: center;
+        cursor: pointer;
+        box-shadow: inset 0 1px 1px rgba(250, 250, 250, .3), 0 0 5px rgba(0, 0, 0, .15);
+        border-radius: .25rem .25rem .25rem .25rem;
+        padding: 1rem;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 900;
+        border-bottom: 1px solid rgba(0, 0, 0, .3);
+        border-right: 1px solid rgba(0, 0, 0, .3);
+        color: rgba(0, 0, 0, .18);
+        &.can {
+            color: #fff;
+            background-color: rgba(250, 250, 250, .15);
+            &.active {
+                background-color: rgba(0, 0, 0, .45);
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+            }
+        }
+    }
+    .btn-submit {
+        background-color: $blue9;
+        padding: .8rem;
+        color: #fff;
+        font-size: 1.6rem;
+        font-weight: 900;
+        cursor: pointer;
+        &.active {
+            background-color: #227ADD;
         }
     }
 }

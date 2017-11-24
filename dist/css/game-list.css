@@ -74,12 +74,24 @@ body {
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: "微软雅黑","Microsoft YaHei",Tahoma,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "微软雅黑", "Microsoft YaHei", Tahoma, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media (min-width: 576px) {
+  body {
+    background: -webkit-linear-gradient(45deg, #bcb192 0%, #5795c2 100%);
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    background: #5d9dc0 url("../images/bg2.jpg");
+  }
 }
 
 @media (min-width: 576px) {
@@ -111,7 +123,7 @@ body {
 .game-header-bg .game-title {
   color: #fff;
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 
 .game-header-bg .game-title:hover {
@@ -120,6 +132,16 @@ body {
 
 .game-header-bg .fa-bars {
   font-size: 1.4rem;
+}
+
+.game-header-bg .back {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.game-header-bg .deposit {
+  font-size: 1.4rem;
+  color: #fff;
 }
 
 .fa-bars {
@@ -288,9 +310,113 @@ body {
 }
 
 .game-content-wrap .row .col-6:nth-last-child(1) {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .game-content-wrap .row .col-6:nth-last-child(2) {
+  margin-bottom: 2rem;
+}
+
+.game-convert-wrap .money-bag-card {
+  background-color: rgba(250, 250, 250, 0.1);
+}
+
+.game-convert-wrap .money-bag-card .card-header {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.game-convert-wrap .money-bag-card .card-body {
+  background-color: transparent;
+  font-weight: 900;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.game-convert-wrap .money-bag-card .card-body .fa {
+  cursor: pointer;
+}
+
+.game-convert-wrap .money-text {
   margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.game-convert-wrap .input-money {
+  position: relative;
+}
+
+.game-convert-wrap .input-money .fa-times {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+.game-convert-wrap .input-money input {
+  background-color: rgba(250, 250, 250, 0.1);
+  font-size: 1.6rem;
+  -webkit-box-shadow: inset 0 1px 1px rgba(250, 250, 250, 0.3), 0 0 5px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 1px 1px rgba(250, 250, 250, 0.3), 0 0 5px rgba(0, 0, 0, 0.15);
+  border-radius: .25rem .25rem .25rem .25rem;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  padding: .8rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.game-convert-wrap .input-money input:focus {
+  background-color: rgba(250, 250, 250, 0.1);
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 1px 1px rgba(250, 250, 250, 0.3), 0 0 5px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 1px 1px rgba(250, 250, 250, 0.3), 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.game-convert-wrap .money {
+  text-align: center;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 1px 1px rgba(250, 250, 250, 0.3), 0 0 5px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 1px 1px rgba(250, 250, 250, 0.3), 0 0 5px rgba(0, 0, 0, 0.15);
+  border-radius: .25rem .25rem .25rem .25rem;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.18);
+}
+
+.game-convert-wrap .money.can {
+  color: #fff;
+  background-color: rgba(250, 250, 250, 0.15);
+}
+
+.game-convert-wrap .money.can.active {
+  background-color: rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.game-convert-wrap .btn-submit {
+  background-color: #33A1FF;
+  padding: .8rem;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.game-convert-wrap .btn-submit.active {
+  background-color: #227ADD;
 }

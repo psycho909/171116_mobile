@@ -74,14 +74,15 @@ body{
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-.game-wrap{
 	@include media-breakpoint-up(xs){
 		background: -webkit-linear-gradient(45deg, rgba(188,177,146,1) 0%, rgba(87,149,194,1) 100%);
 	}
 	@include media-breakpoint-down(xs){
 		background:#5d9dc0 url('../images/bg2.jpg');
 	}
+}
+.game-wrap{
+	
 }
 .add-height{
 	height: 4.6rem;

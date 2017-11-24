@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	    crossorigin="anonymous">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/game-list.css">
+</head>
+
+<body style="">
+	<div class="game-wrap">
+		<!-- Header -->
+		<nav id="header" class="navbar navbar-expand-md navbar-dark game-header-bg py-2 px-3 justify-content-between align-items-center">
+			<a href="game-list.html" class="back">
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</a>
+			<a href="javascript:;" class="game-title text-white">游戏转账</a>
+			<a href="javascript:;" class="deposit">充值</a>
+		</nav>
+
+		<div class="game-convert-wrap">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 my-3">
+						<div class="money-bag-card card p-3">
+							<div class="card-header text-white p-0">
+								主钱包:
+							</div>
+							<div class="card-body text-center p-0 pb-3">
+								<span class="money-total">0.00</span>
+								<span>
+									<i class="fa fa-repeat" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mb-3">
+						<div class="text-white money-text">选择转入金额</div>
+						<div class="input-money">
+							<input type="text" class="form-control" placeholder="输入金额">
+							<i class="fa fa-times" aria-hidden="true"></i>							
+						</div>
+					</div>
+					<div class="col-4 mb-3">
+						<div class="money can active">全部</div>
+					</div>
+					<div class="col-4 mb-3">
+						<div class="money">100</div>
+					</div>
+					<div class="col-4 mb-3">
+						<div class="money">500</div>
+					</div>
+					<div class="col-4 mb-3">
+						<div class="money">1000</div>
+					</div>
+					<div class="col-4 mb-3">
+						<div class="money">5000</div>
+					</div>
+					<div class="col-4 mb-3">
+						<div class="money">10000</div>
+					</div>
+					<div class="col-12">
+						<button class="btn btn-block btn-submit active">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="js/lib/jquery-3.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	    crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	    crossorigin="anonymous"></script>
+	<script>
+		$(function(){
+			$('.input-money input').on('change keypress keydown',function(){
+				var _val=$(this).val()
+				if(_val >= 1){
+					$('.fa-times').show();
+				}else{
+					$('.fa-times').hide();
+				}
+				$('.fa-times').on('click',function(){
+					$('.input-money input').val('')
+					$(this).hide()
+				})
+			})
+		})
+	</script>
+</body>
+
+</html>
