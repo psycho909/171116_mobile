@@ -1,0 +1,71 @@
+@mixin ab-center {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+@mixin fz($size) {
+	font-size: $size + px;
+}
+
+
+@mixin media-breakpoint-up($size) {
+    @if $size=='xs' {
+        @media (min-width: 576px) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-down($size) {
+    @if $size=='xs' {
+        @media (max-width: 576px) {
+            @content;
+        }
+    }
+}
+
+@mixin ball($size) {
+    width: $size;
+    height: $size;
+    text-align: center;
+    line-height: $size;
+    font-size: 1.1rem;
+    background-color: #d5d5d5;
+    border-radius: 50%;
+    color: #000;
+    box-shadow: inset 1px -6px 10px #fff;
+    display: inline-block;
+}
+
+@mixin ball($size){
+	width: $size;
+	height: $size;
+	text-align: center;
+	line-height: $size;
+	font-size: 1.1rem;
+	background-color: #d5d5d5;
+	border-radius: 50%;
+	color:#000;
+	box-shadow: inset 1px -6px 10px #fff;
+	display: inline-block;
+}
+
+$blue9:#33A1FF;
+$red9:#EF6B73;
+$gray9:lighten(#000000, 75%);
+$dark-gray9:lighten(#000000, 25%);
+$gray:#F5F7F8;
+
+$circle-colors:(
+	circle1:#FFFB08,
+	circle2:#008BF9,
+	circle3:#4C4D51,
+	circle4:#F47A00,
+	circle5:#8FF9F9,
+	circle6:#420AFF,
+	circle7:#E3E3E3,
+	circle8:#FF0400,
+	circle9:#770100,
+	circle10:#2BC610
+);
